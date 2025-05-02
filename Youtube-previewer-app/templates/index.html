@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Preview</title>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <style>
+        /* Apply gradient background to the body */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: white;
+        }
+
+        /* Top Navigation Panel */
+        .navbar {
+            background: #004e92; /* Blue gradient color */
+            padding: 10px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Input field */
+        input {
+            width: 80%;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Preview section */
+        #preview {
+            margin-top: 20px;
+            display: none;
+        }
+
+        /* Thumbnail styling */
+        #thumbnail {
+            max-width: 200px;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        /* Displaying video info */
+        h3 {
+            font-size: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        /* Link styling */
+        a {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Flash messages */
+        .flash-messages {
+            color: #ff0000;
+            list-style-type: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        YouTube Video Preview App
+    </div>
+
+    <h2>Enter a YouTube Link to Preview</h2>
+    <input type="text" id="videoURL" placeholder="Paste YouTube link here">
+
+    <div id="preview">
+        <h3 id="title"></h3>
+        <p><strong>Channel:</strong> <span id="channel"></span></p>
+        <p><strong>Duration:</strong> <span id="duration"></span> seconds</p>
+        <img id="thumbnail" src="">
+        <p><a id="videoLink" href="#" target="_blank">Watch on YouTube</a></p>
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+</body>
+</html>
