@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: daily-5-minute-skills
+    runtime: python
+    buildCommand: ""
+    startCommand: python app.py
+    envVars:
+      - key: YOUTUBE_API_KEY
+        sync: false
